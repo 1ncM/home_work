@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @route.name %>
+</p>
+
+<p>
+  <strong>Stations:</strong>
+  <% @route.railway_stations.each do |station| %>
+    <li><%= station.title %></li> 
+  <% end %>
+</p>
+
+<p>
+  <strong>Trains on route:</strong>
+  <% if @route.trains.empty? %>
+    Нет поездов на маршруте
+  <% else %>
+    <% @route.trains.each do |train| %>
+    <ul>
+      <li><%= train.number %></li> 
+    </ul> 
+    <% end %>
+  <% end %>
+</p>
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>
