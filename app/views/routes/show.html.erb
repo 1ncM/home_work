@@ -9,6 +9,13 @@
   <strong>Stations:</strong>
   <% @route.railway_stations.each do |station| %>
     <li><%= station.title %></li> 
+    <li><%= form_with(model: station, local: true) do |form| %>
+          <div class="field">
+            <%= form.label :position %>
+            <%= form.number_field :position, id: :station_position %>
+          </div>
+        <% end %>
+    </li>
   <% end %>
 </p>
 
