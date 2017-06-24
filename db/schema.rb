@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170621072315) do
   end
 
   create_table "wagons", force: :cascade do |t|
+    t.string "name"
     t.string "type_of_wagon"
     t.integer "up_seats"
     t.integer "down_seats"
