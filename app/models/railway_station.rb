@@ -7,4 +7,9 @@ class RailwayStation < ApplicationRecord
     station_route = railway_stations_routes.where(route: route).first
     station_route.update(position: position) if station_route
   end
+
+  def position_in(route)
+    station_route = railway_stations_routes.where(route: route).first
+    station_route.position if station_route
+  end
 end
