@@ -16,14 +16,22 @@
     Вагоны отсутсвуют
   <% else %>
     <ul>
-      <li>Купейных вагонов: <%= @train.wagons.where(type_of_wagon: "Coupe").count %></li>
-      <li>Плацкартных вагонов: <%= @train.wagons.where(type_of_wagon: "Economy").count %></li>
-      <li>Купейных верхних: <%= @train.wagons.where(type_of_wagon: "Coupe").sum(:up_seats) %></li>
-      <li>Купейных нижних: <%= @train.wagons.where(type_of_wagon: "Coupe").sum(:down_seats) %></li>
-     <li>Плацкартных верхних: <%= @train.wagons.where(type_of_wagon: "Economy").sum(:up_seats) %></li>
-      <li>Плацкартных нижних: <%= @train.wagons.where(type_of_wagon: "Economy").sum(:down_seats) %></li>      
+        <li>Купейных вагонов: <%= @train.wagons.where(type_of_wagon: "Coupe").count %></li>
+          <% @train.wagons.where(type_of_wagon: "Coupe").each do |wagon|%>
+            <li><%= link_to wagon.number, wagon %></li>
+          <% end %>
+        <li>Плацкартных вагонов: <%= @train.wagons.where(type_of_wagon: "Economy").count %></li>
+        <li>Купейных верхних: <%= @train.wagons.where(type_of_wagon: "Coupe").sum(:up_seats) %></li>
+        <li>Купейных нижних: <%= @train.wagons.where(type_of_wagon: "Coupe").sum(:down_seats) %></li>
+        <li>Плацкартных верхних: <%= @train.wagons.where(type_of_wagon: "Economy").sum(:up_seats) %></li>
+        <li>Плацкартных нижних: <%= @train.wagons.where(type_of_wagon: "Economy").sum(:down_seats) %></li>      
     </ul>
   <% end %>
 </p>
+
+<p>
+<%= link_to 'Add wagon', new_train_wagon_path(@train) %>
+</p>
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
