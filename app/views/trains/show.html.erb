@@ -21,6 +21,9 @@
             <li><%= link_to wagon.number, wagon %></li>
           <% end %>
         <li>Плацкартных вагонов: <%= @train.wagons.where(type_of_wagon: "Economy").count %></li>
+          <% @train.wagons.where(type_of_wagon: "Economy").each do |wagon|%>
+            <li><%= link_to wagon.number, wagon %></li>
+          <% end %>
         <li>Купейных верхних: <%= @train.wagons.where(type_of_wagon: "Coupe").sum(:up_seats) %></li>
         <li>Купейных нижних: <%= @train.wagons.where(type_of_wagon: "Coupe").sum(:down_seats) %></li>
         <li>Плацкартных верхних: <%= @train.wagons.where(type_of_wagon: "Economy").sum(:up_seats) %></li>
