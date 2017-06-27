@@ -24,10 +24,10 @@
           <% @train.sorted_wagons.where(type_of_wagon: "Economy").each do |wagon|%>
             <li><%= link_to wagon.number, wagon %></li>
           <% end %>
-        <li>Купейных верхних: <%= @train.wagons.where(type_of_wagon: "Coupe").sum(:up_seats) %></li>
-        <li>Купейных нижних: <%= @train.wagons.where(type_of_wagon: "Coupe").sum(:down_seats) %></li>
-        <li>Плацкартных верхних: <%= @train.wagons.where(type_of_wagon: "Economy").sum(:up_seats) %></li>
-        <li>Плацкартных нижних: <%= @train.wagons.where(type_of_wagon: "Economy").sum(:down_seats) %></li>      
+        <li>Купейных верхних: <%= @train.custom_count("Coupe",:up_seats) %></li>
+        <li>Купейных нижних: <%= @train.custom_count("Coupe",:down_seats) %></li>
+        <li>Плацкартных верхних: <%= @train.custom_count("Economy",:up_seats) %></li>
+        <li>Плацкартных нижних: <%= @train.custom_count("Economy",:down_seats) %></li>      
     </ul>
   <% end %>
 </p>

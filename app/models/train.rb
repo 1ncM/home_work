@@ -11,4 +11,8 @@ class Train < ApplicationRecord
       self.wagons.desc
     end
   end
+
+  def custom_count(wagon_type, seat_type)
+    wagons.where(type_of_wagon: wagon_type).sum(seat_type)
+  end
 end
