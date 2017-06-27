@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Number:</strong>
+  <%= @wagon.number %>
+</p>
+
+<p>
   <strong>Id:</strong>
   <%= @wagon.id %>
 </p>
@@ -30,4 +35,4 @@
   <%= @wagon.down_seats %>
 </p>
 <%= link_to 'Edit', edit_wagon_path(@wagon) %> |
-<%= link_to 'Back', wagons_path %>
+<%= link_to 'Back', @wagon.train %>

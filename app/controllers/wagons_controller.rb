@@ -8,14 +8,16 @@ class WagonsController < ApplicationController
   end
 
   def new
+    @train = Train.find(params[:train_id])
     @wagon = Wagon.new
   end
 
   def create
-    @wagon = Wagon.create(wagon_params)
+    @train = Train.find(params[:train_id])
+    @wagon = @train.wagons.new(wagon_params)
 
     if @wagon.save
-      redirect_to @wagon
+      redirect_to @train
     else
       render :new
     end
