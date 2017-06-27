@@ -17,11 +17,11 @@
   <% else %>
     <ul>
         <li>Купейных вагонов: <%= @train.wagons.where(type_of_wagon: "Coupe").count %></li>
-          <% @train.wagons.where(type_of_wagon: "Coupe").each do |wagon|%>
+          <% @train.sorted_wagons.where(type_of_wagon: "Coupe").each do |wagon|%>
             <li><%= link_to wagon.number, wagon %></li>
           <% end %>
         <li>Плацкартных вагонов: <%= @train.wagons.where(type_of_wagon: "Economy").count %></li>
-          <% @train.wagons.where(type_of_wagon: "Economy").each do |wagon|%>
+          <% @train.sorted_wagons.where(type_of_wagon: "Economy").each do |wagon|%>
             <li><%= link_to wagon.number, wagon %></li>
           <% end %>
         <li>Купейных верхних: <%= @train.wagons.where(type_of_wagon: "Coupe").sum(:up_seats) %></li>
