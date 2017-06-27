@@ -6,6 +6,9 @@ class Wagon < ApplicationRecord
 
   after_validation :set_number
 
+  scope :asc, -> { order(:id)}
+  scope :desc, -> { order("Id desc")}
+
   private
 
   def set_number
