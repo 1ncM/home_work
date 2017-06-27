@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   end
   resources :routes
   resources :tickets
-  resource :search
+  resource :search, only: [:show, :new, :edit]
+
   get 'welcome/index'
 
   root 'welcome#index'
