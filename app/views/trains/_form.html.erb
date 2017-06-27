@@ -7,6 +7,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :sorting_wagons, 'Сортировка вагонов' %>
+    <%= form.select :sorting_wagons, [["С головы поезда", true], ["С хвоста поезда", false]] %>
+  </div>
+
+  <div class="field">
     <%= form.label :route_id, 'Route' %>
     <%= form.collection_select :route_id, Route.all, :id, :name %>
   </div>
